@@ -1,0 +1,73 @@
+# Visual Studio & Solution Files
+.vs/
+*.suo
+*.user
+*.userprefs
+*.log
+*.pdb
+*.opendb
+*.testrunconfig
+*.trx
+*.vspscc
+*.vssscc
+*.webtest
+*.xml
+*.dotCover
+*.ReSharper
+*.resharper
+*.idea
+*.DS_Store # macOS specific
+Thumbs.db # Windows specific
+*.sln.docstates
+*.sln.ide
+*.sln.layout
+*.code-workspace
+*.ipr
+*.iml
+*.iws
+*.bak
+*.tmp
+
+# Build Output and Binaries (covers all projects within the solution)
+**/bin/
+**/obj/
+**/[Dd]ebug/
+**/[Rr]elease/
+**/dist/
+**/build/
+*.nupkg
+*.dll
+*.exe
+*.pdb
+
+# Package Manager
+**/packages/
+**/node_modules/
+
+# Local Settings & Secrets
+**/appsettings*.Development.json # Prevents accidental commit of local dev configs
+**/appsettings*.Production.json # If you have prod specific local config
+**/appsettings.json.example # If you use example configs
+**/secrets.json # User secrets will typically be outside, but just in case
+.env # Common for environment variables if used
+
+# EF Core Migrations
+**/Migrations/*.Designer.cs # Ignore generated designer files
+**/Migrations/*.cs.bak # Ignore backup files
+
+# Database Files
+*.db
+*.mdf
+*.ldf
+*.sqlite
+*.sqlite-journal
+
+# Visual Studio Code
+.vscode/
+
+# Rider
+.idea/
+
+# Temporary files
+*.~
+*.tmp
